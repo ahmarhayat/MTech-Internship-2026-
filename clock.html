@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live Digital Clock</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #0f172a;
+      color: #38bdf8;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+    }
+    .clock-card {
+      background-color: #1e293b;
+      padding: 2rem 3rem;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+      text-align: center;
+      border: 1px solid #334155;
+    }
+    h1 {
+      font-size: 3.5rem;
+      margin: 0;
+      letter-spacing: 4px;
+    }
+    p {
+      color: #94a3b8;
+      font-family: Arial, sans-serif;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="clock-card">
+    <h1 id="clock">00:00:00</h1>
+    <p>Live Real-Time Digital Clock</p>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      
+      // Extract hours, minutes, and seconds
+      let hours = String(now.getHours()).padStart(2, '0');
+      let minutes = String(now.getMinutes()).padStart(2, '0');
+      let seconds = String(now.getSeconds()).padStart(2, '0');
+
+      // Update the DOM heading element
+      document.getElementById('clock').innerText = `${hours}:${minutes}:${seconds}`;
+    }
+
+    // Call updateClock every 1000 milliseconds (1 second) using setInterval
+    setInterval(updateClock, 1000);
+
+    // Initial call to prevent 1-second delay on page load
+    updateClock();
+  </script>
+
+</body>
+</html>

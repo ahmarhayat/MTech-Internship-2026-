@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cricket Over Simulator</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2rem; background: #f9fafb; }
+    .card { background: white; padding: 1.5rem; border-radius: 8px; max-width: 500px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .ball-log { margin: 0.5rem 0; padding: 0.4rem; background: #eef2ff; border-left: 4px solid #4f46e5; }
+    .summary { margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #ddd; font-weight: bold; }
+    button { padding: 0.5rem 1rem; background: #4f46e5; color: white; border: none; border-radius: 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Cricket Over Simulator</h2>
+    <button onclick="simulateOver()">Simulate Over</button>
+    
+    <div id="commentary" style="margin-top: 1rem;"></div>
+    <div id="summary" class="summary"></div>
+  </div>
+
+  <script>
+    function simulateOver() {
+      // Generate array of 6 random runs (0 to 6)
+      const runs = Array.from({ length: 6 }, () => Math.floor(Math.random() * 7));
+      
+      const commentaryDiv = document.getElementById('commentary');
+      const summaryDiv = document.getElementById('summary');
+      
+      commentaryDiv.innerHTML = '<h3>Ball-by-Ball Commentary:</h3>';
+
+      // Ball-by-ball loop
+      runs.forEach((run, index) => {
+        let text = '';
+        if (run === 0) text = 'Dot ball! Excellent delivery.';
+        else if (run === 4) text = 'FOUR! Placed beautifully through the gap.';
+        else if (run === 6) text = 'SIX! Monster hit over the boundary!';
+        else text = `${run} run(s) taken.`;
+
+        commentaryDiv.innerHTML += `<div class="ball-log"><strong>Ball 0.${index + 1}:</strong> ${run} runs — ${text}</div>`;
+      });
+
+      // Compute total runs using Array.prototype.reduce
+      const totalRuns = runs.reduce((accumulator, current) => accumulator + current, 0);
+      
+      // Strike Rate calculation: (Total Runs / Balls Faced) * 100
+      const strikeRate = ((totalRuns / 6) * 100).toFixed(2);
+
+      summaryDiv.innerHTML = `
+        <p>Over Summary: [ ${runs.join(' | ')} ]</p>
+        <p>Total Runs Scored: <strong>${totalRuns}</strong></p>
+        <p>Batter Strike Rate: <strong>${strikeRate}</strong></p>
+      `;
+    }
+
+    // Run automatically on load
+    simulateOver();
+  </script>
+
+</body>
+</html>

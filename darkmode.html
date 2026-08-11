@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dark Mode Toggle</title>
+  <style>
+    /* CSS Light Mode Styling */
+    body.light-mode {
+      background-color: #ffffff;
+      color: #1f2937;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+    
+    /* CSS Dark Mode Styling */
+    body.dark-mode {
+      background-color: #111827;
+      color: #f9fafb;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 100px auto;
+      padding: 2rem;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .theme-btn {
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: #028090;
+      color: white;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body class="light-mode">
+
+  <div class="container">
+    <h2 id="modeTitle">Light Mode Active</h2>
+    <p>This page toggles theme classes on the <code>&lt;body&gt;</code> element without saving state to local storage (state stored in a JS variable).</p>
+    
+    <button class="theme-btn" onclick="toggleTheme()">Switch Theme</button>
+  </div>
+
+  <script>
+    // State stored strictly in a JS variable
+    let isDarkMode = false;
+
+    function toggleTheme() {
+      // Toggle variable state
+      isDarkMode = !isDarkMode;
+
+      const body = document.body;
+      const title = document.getElementById('modeTitle');
+
+      if (isDarkMode) {
+        body.className = 'dark-mode';
+        title.innerText = 'Dark Mode Active';
+      } else {
+        body.className = 'light-mode';
+        title.innerText = 'Light Mode Active';
+      }
+    }
+  </script>
+
+</body>
+</html>

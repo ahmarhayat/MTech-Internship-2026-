@@ -1,64 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ahmar Hayat - Personal Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-Tech Task Manager - JS Essentials</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>M-Tech Task Manager</h1>
+        <p>Lab 2.4: JavaScript Essentials</p>
+    </header>
 
-  <!-- Flexbox Navbar -->
-  <header class="navbar">
-    <div class="logo">Ahmar<span>Hayat</span></div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <main>
+        <section class="task-input">
+            <input type="text" id="taskInput" placeholder="Enter a new task...">
+            <button id="addBtn">Add Task</button>
+        </section>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <div class="hero-content">
-      <h1>Hi, I'm <span>Ahmar Hayat</span></h1>
-      <p>AI Student & Full-Stack Developer passionate about intelligent systems and scalable web applications.</p>
-      <a href="#projects" class="btn">View My Work</a>
-    </div>
-  </section>
+        <section class="tasks">
+            <h2>My Tasks</h2>
+            <ul id="taskList">
+                <!-- Tasks will be added here by JavaScript -->
+            </ul>
+        </section>
+    </main>
 
-  <!-- Card-Based Projects Section (CSS Grid) -->
-  <section id="projects" class="projects-section">
-    <h2>Featured Projects</h2>
-    <div class="projects-grid">
-      
-      <div class="project-card">
-        <h3>MOCK BOT</h3>
-        <p>AI-powered mock interview web application designed to evaluate candidate responses in real-time.</p>
-        <span class="tech-tag">Python / Flask</span>
-      </div>
+    <footer>
+        <p>© 2026 M-Tech Production & Marketing</p>
+    </footer>
 
-      <div class="project-card">
-        <h3>Airport Management System</h3>
-        <p>Full-stack relational database management system tracking live flight schedules and passengers.</p>
-        <span class="tech-tag">Flask / MySQL</span>
-      </div>
-
-      <div class="project-card">
-        <h3>Internship Diary</h3>
-        <p>Git-managed portfolio log tracking technical deliverables and developer milestones.</p>
-        <span class="tech-tag">Git / Markdown</span>
-      </div>
-
-    </div>
-  </section>
-
-  <footer class="footer">
-    <p>&copy; 2026 Ahmar Hayat | PAF-IAST</p>
-  </footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
