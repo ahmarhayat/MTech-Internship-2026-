@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailwind Profile Card</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 flex items-center justify-center min-h-screen p-4">
+
+  <!-- Profile Card Container -->
+  <div class="w-full max-w-sm bg-slate-800 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden text-center">
+    
+    <!-- Header Banner -->
+    <div class="h-24 bg-gradient-to-r from-teal-500 to-cyan-600"></div>
+
+    <!-- Avatar & Info Body -->
+    <div class="px-6 pb-6 relative">
+      <div class="w-24 h-24 mx-auto -mt-12 rounded-full border-4 border-slate-800 bg-slate-700 flex items-center justify-center shadow-lg overflow-hidden">
+        <span class="text-3xl font-extrabold text-teal-400">AH</span>
+      </div>
+
+      <h3 class="text-xl font-bold text-white mt-3">Ahmar Hayat</h3>
+      <p class="text-sm font-medium text-teal-400">AI Student & Full-Stack Developer</p>
+      <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+        Building intelligent web systems with Python, Flask, JavaScript, and Tailwind CSS.
+      </p>
+
+      <!-- Stats Bar -->
+      <div class="flex justify-around my-5 py-3 bg-slate-900/60 rounded-xl border border-slate-700/50">
+        <div>
+          <span class="block text-lg font-bold text-white">14</span>
+          <span class="text-xs text-slate-400">Projects</span>
+        </div>
+        <div class="border-r border-slate-700"></div>
+        <div>
+          <span class="block text-lg font-bold text-white">120+</span>
+          <span class="text-xs text-slate-400">Commits</span>
+        </div>
+        <div class="border-r border-slate-700"></div>
+        <div>
+          <span class="block text-lg font-bold text-white">5</span>
+          <span class="text-xs text-slate-400">Domains</span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex gap-3">
+        <button class="flex-1 bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold py-2 rounded-xl text-sm transition">
+          Follow
+        </button>
+        <button class="flex-1 bg-slate-700 hover:bg-slate-600 text-white font-bold py-2 rounded-xl text-sm border border-slate-600 transition">
+          Message
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
