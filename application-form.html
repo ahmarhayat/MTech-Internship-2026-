@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M-Tech Internship Application Form</title>
+</head>
+<body>
+
+  <h2>M-Tech Internship Application Form</h2>
+
+  <form action="/submit" method="POST" enctype="multipart/form-data">
+    
+    <!-- Full Name -->
+    <div>
+      <label for="fullname">Full Name:</label><br>
+      <input type="text" id="fullname" name="fullname" required placeholder="Ahmar Hayat">
+    </div>
+    <br>
+
+    <!-- Email -->
+    <div>
+      <label for="email">Email Address:</label><br>
+      <input type="email" id="email" name="email" required placeholder="applicant@example.com">
+    </div>
+    <br>
+
+    <!-- Phone (tel) -->
+    <div>
+      <label for="phone">Phone Number:</label><br>
+      <input type="tel" id="phone" name="phone" required placeholder="03001234567" pattern="[0-9]{11}">
+    </div>
+    <br>
+
+    <!-- CNIC with Pattern Validation (XXXXX-XXXXXXX-X) -->
+    <div>
+      <label for="cnic">CNIC Number (Format: 13301-1234567-1):</label><br>
+      <input type="text" id="cnic" name="cnic" required pattern="[0-9]{5}-[0-9]{7}-[0-9]{1}" placeholder="13301-1234567-1">
+    </div>
+    <br>
+
+    <!-- Date of Birth -->
+    <div>
+      <label for="dob">Date of Birth:</label><br>
+      <input type="date" id="dob" name="dob" required>
+    </div>
+    <br>
+
+    <!-- Gender (Radio) -->
+    <div>
+      <label>Gender:</label><br>
+      <input type="radio" id="male" name="gender" value="Male" required>
+      <label for="male">Male</label>
+      <input type="radio" id="female" name="gender" value="Female">
+      <label for="female">Female</label>
+      <input type="radio" id="other" name="gender" value="Other">
+      <label for="other">Other</label>
+    </div>
+    <br>
+
+    <!-- 3+ Technical Skills (Checkboxes) -->
+    <div>
+      <label>Select Your Skills (At least 1 required):</label><br>
+      <input type="checkbox" id="skill1" name="skills" value="Python">
+      <label for="skill1">Python</label><br>
+      <input type="checkbox" id="skill2" name="skills" value="JavaScript">
+      <label for="skill2">JavaScript</label><br>
+      <input type="checkbox" id="skill3" name="skills" value="SQL">
+      <label for="skill3">SQL / Databases</label><br>
+      <input type="checkbox" id="skill4" name="skills" value="Flask">
+      <label for="skill4">Flask / Web Frameworks</label>
+    </div>
+    <br>
+
+    <!-- Domain (Select Dropdown) -->
+    <div>
+      <label for="domain">Preferred Domain:</label><br>
+      <select id="domain" name="domain" required>
+        <option value="">-- Choose Domain --</option>
+        <option value="ai_ml">Artificial Intelligence / Machine Learning</option>
+        <option value="web_dev">Full-Stack Web Development</option>
+        <option value="data_science">Data Science & Analytics</option>
+        <option value="cybersecurity">Cybersecurity</option>
+      </select>
+    </div>
+    <br>
+
+    <!-- Motivation (Textarea) -->
+    <div>
+      <label for="motivation">Statement of Motivation:</label><br>
+      <textarea id="motivation" name="motivation" rows="4" cols="40" required placeholder="Why do you want to join M-Tech?"></textarea>
+    </div>
+    <br>
+
+    <!-- File Upload for CV -->
+    <div>
+      <label for="cv">Upload CV (PDF/DOCX):</label><br>
+      <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+    </div>
+    <br>
+
+    <!-- Submit & Reset Buttons -->
+    <div>
+      <button type="submit">Submit Application</button>
+      <button type="reset">Reset Form</button>
+    </div>
+
+  </form>
+
+</body>
+</html>
