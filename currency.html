@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #0f172a; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .card { background: #1e293b; padding: 2rem; border-radius: 12px; width: 340px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); border: 1px solid #334155; }
+    label { font-size: 0.9rem; color: #94a3b8; }
+    input { width: 100%; padding: 0.7rem; margin-top: 0.4rem; margin-bottom: 1.5rem; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: white; font-size: 1.1rem; box-sizing: border-box; }
+    .rates-list { background: #0f172a; border-radius: 8px; padding: 1rem; }
+    .rate-item { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #1e293b; }
+    .rate-item:last-child { border-bottom: none; }
+    .rate-val { font-weight: bold; color: #38bdf8; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>USD Currency Converter</h2>
+    <label for="usdInput">Amount in USD ($):</label>
+    <input type="number" id="usdInput" value="1" min="0" oninput="convertCurrency()">
+
+    <div class="rates-list">
+      <div class="rate-item"><span>PKR (Pakistani Rupee):</span> <span id="pkr" class="rate-val">0.00</span></div>
+      <div class="rate-item"><span>EUR (Euro):</span> <span id="eur" class="rate-val">0.00</span></div>
+      <div class="rate-item"><span>SAR (Saudi Riyal):</span> <span id="sar" class="rate-val">0.00</span></div>
+    </div>
+  </div>
+
+  <script>
+    let exchangeRates = {};
+
+    async function loadRates() {
+      try {
+        const res = await fetch('https://open.er-api.com/v6/latest/USD');
+        const data = await res.json();
+        exchangeRates = data.rates;
+        convertCurrency();
+      } catch (err) {
+        console.error('Failed to fetch rates', err);
+      }
+    }
+
+    function convertCurrency() {
+      const usd = parseFloat(document.getElementById('usdInput').value) || 0;
+      
+      if (exchangeRates.PKR) {
+        document.getElementById('pkr').innerText = (usd * exchangeRates.PKR).toFixed(2);
+        document.getElementById('eur').innerText = (usd * exchangeRates.EUR).toFixed(2);
+        document.getElementById('sar').innerText = (usd * exchangeRates.SAR).toFixed(2);
+      }
+    }
+
+    loadRates();
+  </script>
+
+</body>
+</html>

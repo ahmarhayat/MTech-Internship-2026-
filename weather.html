@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Haripur Weather Widget</title>
+  <style>
+    body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #e0f2fe; }
+    .widget { background: white; padding: 2rem; border-radius: 16px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 280px; }
+    .temp { font-size: 3.2rem; font-weight: bold; color: #028090; margin: 0.5rem 0; }
+    button { background: #028090; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    button:hover { background: #015c68; }
+  </style>
+</head>
+<body>
+
+  <div class="widget">
+    <h3>📍 Haripur Weather</h3>
+    <div id="temperature" class="temp">--°C</div>
+    <p id="status" style="color: #64748b; font-size: 0.85rem;">Fetching live data...</p>
+    <button onclick="fetchWeather()">Refresh</button>
+  </div>
+
+  <script>
+    async function fetchWeather() {
+      const tempDiv = document.getElementById('temperature');
+      const statusDiv = document.getElementById('status');
+      
+      statusDiv.innerText = 'Updating...';
+
+      try {
+        // Open-Meteo API for Haripur (Lat 33.99, Lon 72.93)
+        const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=33.99&longitude=72.93&current_weather=true');
+        const data = await res.json();
+        
+        const temp = data.current_weather.temperature;
+        tempDiv.innerText = `${temp}°C`;
+        statusDiv.innerText = `Last updated: ${new Date().toLocaleTimeString()}`;
+      } catch (err) {
+        tempDiv.innerText = 'Error';
+        statusDiv.innerText = 'Unable to connect to service.';
+      }
+    }
+
+    fetchWeather();
+  </script>
+
+</body>
+</html>

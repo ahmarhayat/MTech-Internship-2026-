@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub Follower Comparison</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #0f172a; color: white; padding: 2rem; display: flex; justify-content: center; }
+    .card { background: #1e293b; padding: 2rem; border-radius: 12px; width: 500px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+    .input-group { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    input { flex: 1; padding: 0.6rem; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: white; }
+    button { background: #028090; color: white; border: none; padding: 0.6rem 1rem; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+    .user-box { background: #0f172a; padding: 1rem; border-radius: 8px; text-align: center; border: 2px solid transparent; }
+    .winner { border-color: #22c55e; }
+    .followers { font-size: 1.8rem; font-weight: bold; color: #38bdf8; }
+    #resultText { margin-top: 1.5rem; text-align: center; font-size: 1.1rem; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>GitHub Follower Face-Off</h2>
+    <div class="input-group">
+      <input type="text" id="user1" value="torvalds" placeholder="User 1">
+      <input type="text" id="user2" value="gaearon" placeholder="User 2">
+      <button onclick="compareUsers()">Compare</button>
+    </div>
+
+    <div id="output"></div>
+  </div>
+
+  <script>
+    async function compareUsers() {
+      const u1 = document.getElementById('user1').value.trim();
+      const u2 = document.getElementById('user2').value.trim();
+      const output = document.getElementById('output');
+
+      output.innerHTML = '<p style="text-align:center;">Fetching users in parallel with Promise.all...</p>';
+
+      try {
+        // Fetch both GitHub endpoints in PARALLEL using Promise.all
+        const [res1, res2] = await Promise.all([
+          fetch(`https://api.github.com/users/${u1}`),
+          fetch(`https://api.github.com/users/${u2}`)
+        ]);
+
+        if (!res1.ok || !res2.ok) throw new Error('One or both users not found');
+
+        const [user1Data, user2Data] = await Promise.all([res1.json(), res2.json()]);
+
+        const u1Winner = user1Data.followers >= user2Data.followers;
+        const u2Winner = user2Data.followers >= user1Data.followers;
+
+        output.innerHTML = `
+          <div class="comparison-grid">
+            <div class="user-box ${u1Winner ? 'winner' : ''}">
+              <img src="${user1Data.avatar_url}" width="60" style="border-radius: 50%;">
+              <h4>${user1Data.name || user1Data.login}</h4>
+              <div class="followers">${user1Data.followers}</div>
+              <small>Followers</small>
+            </div>
+            <div class="user-box ${u2Winner ? 'winner' : ''}">
+              <img src="${user2Data.avatar_url}" width="60" style="border-radius: 50%;">
+              <h4>${user2Data.name || user2Data.login}</h4>
+              <div class="followers">${user2Data.followers}</div>
+              <small>Followers</small>
+            </div>
+          </div>
+          <div id="resultText">
+            🏆 ${user1Data.followers === user2Data.followers ? "It's a tie!" : (u1Winner ? user1Data.login : user2Data.login) + ' has more followers!'}
+          </div>
+        `;
+
+      } catch (err) {
+        output.innerHTML = `<p style="color: #ef4444; text-align:center;">${err.message}</p>`;
+      }
+    }
+
+    compareUsers();
+  </script>
+
+</body>
+</html>
