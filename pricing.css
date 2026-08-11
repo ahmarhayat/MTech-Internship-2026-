@@ -1,0 +1,145 @@
+:root {
+  --teal: #028090;
+  --mint: #02C39A;
+  --dark: #1f2937;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f4f6;
+  padding: 3rem 1rem;
+}
+
+.section-title {
+  text-align: center;
+  color: var(--teal);
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Task 2: Flexbox Layout for Pricing Cards */
+.pricing-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  flex: 1;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 2px solid transparent;
+  position: relative;
+  
+  /* Hover Lift Transition Effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Lift Effect */
+.pricing-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+/* Middle Card Highlighted */
+.pricing-card.highlight {
+  border-color: var(--mint);
+  transform: scale(1.05);
+  background: #fafafa;
+}
+
+.pricing-card.highlight:hover {
+  transform: scale(1.05) translateY(-10px);
+}
+
+.badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--mint);
+  color: var(--dark);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+.pricing-card h3 {
+  color: var(--teal);
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+}
+
+.price span {
+  font-size: 1rem;
+  color: #777;
+}
+
+.features {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.features li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+  color: #555;
+}
+
+.card-btn {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  background-color: var(--teal);
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.card-btn:hover {
+  background-color: #015c68;
+}
+
+.btn-highlight {
+  background-color: var(--mint);
+  color: var(--dark);
+}
+
+.btn-highlight:hover {
+  background-color: #029d7b;
+}
+
+/* Task 4: Media Query for Mobile Responsiveness (3 cols -> 1 col) */
+@media (max-width: 768px) {
+  .pricing-table {
+    flex-direction: column;
+  }
+
+  .pricing-card {
+    width: 100%;
+  }
+
+  .pricing-card.highlight {
+    transform: scale(1);
+  }
+
+  .pricing-card.highlight:hover {
+    transform: translateY(-10px);
+  }
+}

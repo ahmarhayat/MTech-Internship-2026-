@@ -4,44 +4,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ahmar Hayat - Personal Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <header>
-    <h1>Ahmar Hayat</h1>
-    <p>AI Undergraduate & Full-Stack Developer</p>
+  <!-- Flexbox Navbar -->
+  <header class="navbar">
+    <div class="logo">Ahmar<span>Hayat</span></div>
     <nav>
-      <a href="index.html">Home</a> |
-      <a href="projects.html">Projects</a> |
-      <a href="contact.html">Contact</a>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
   </header>
 
-  <hr>
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <h1>Hi, I'm <span>Ahmar Hayat</span></h1>
+      <p>AI Student & Full-Stack Developer passionate about intelligent systems and scalable web applications.</p>
+      <a href="#projects" class="btn">View My Work</a>
+    </div>
+  </section>
 
-  <main>
-    <section>
-      <h2>About Me</h2>
-      <p>
-        Hello! I am an Artificial Intelligence student passionate about building full-stack web applications, 
-        exploring localized AI agent workflows, and solving real-world technical problems.
-      </p>
-    </section>
+  <!-- Card-Based Projects Section (CSS Grid) -->
+  <section id="projects" class="projects-section">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+      
+      <div class="project-card">
+        <h3>MOCK BOT</h3>
+        <p>AI-powered mock interview web application designed to evaluate candidate responses in real-time.</p>
+        <span class="tech-tag">Python / Flask</span>
+      </div>
 
-    <section>
-      <h2>Core Skills</h2>
-      <ul>
-        <li><strong>Languages:</strong> Python, JavaScript (ES6+), C++, SQL</li>
-        <li><strong>Web & Back-End:</strong> Flask, HTML5, CSS3, Node.js</li>
-        <li><strong>Tools & Platforms:</strong> Git, GitHub, MySQL, VS Code</li>
-      </ul>
-    </section>
-  </main>
+      <div class="project-card">
+        <h3>Airport Management System</h3>
+        <p>Full-stack relational database management system tracking live flight schedules and passengers.</p>
+        <span class="tech-tag">Flask / MySQL</span>
+      </div>
 
-  <hr>
+      <div class="project-card">
+        <h3>Internship Diary</h3>
+        <p>Git-managed portfolio log tracking technical deliverables and developer milestones.</p>
+        <span class="tech-tag">Git / Markdown</span>
+      </div>
 
-  <footer>
-    <p>&copy; 2026 Ahmar Hayat. All rights reserved.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2026 Ahmar Hayat | PAF-IAST</p>
   </footer>
 
 </body>
