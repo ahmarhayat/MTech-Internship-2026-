@@ -3,35 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - Ahmar Hayat</title>
+  <title>Contact Us - Static Site</title>
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 20px; line-height: 1.6; }
+    nav { background: #333; padding: 10px; border-radius: 5px; }
+    nav a { color: white; margin-right: 15px; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    main { margin-top: 20px; }
+    form { display: flex; flex-direction: column; max-width: 300px; gap: 10px; margin-top: 15px; }
+    input, textarea, button { padding: 8px; font-size: 14px; }
+  </style>
 </head>
 <body>
 
-  <header>
-    <h1>Get in Touch</h1>
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="projects.html">Projects</a> |
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <hr>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
   <main>
-    <section>
-      <h2>Contact Details</h2>
-      <p><strong>Email:</strong> ahmarhayat@example.com</p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/ahmarhayat" target="_blank">github.com/ahmarhayat</a></p>
-      <p><strong>Location:</strong> Haripur, Pakistan</p>
-    </section>
+    <h1>Contact Us</h1>
+    <p>Get in touch with us using the form below.</p>
+    
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </main>
-
-  <hr>
-
-  <footer>
-    <p>&copy; 2026 Ahmar Hayat. All rights reserved.</p>
-  </footer>
 
 </body>
 </html>

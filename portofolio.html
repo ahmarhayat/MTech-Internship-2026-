@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio SPA</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { background: #f4f7f6; color: #333; padding: 20px; }
+    nav { background: #023e47; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+    nav a { color: #fff; text-decoration: none; margin-right: 15px; padding: 6px 12px; border-radius: 4px; transition: 0.2s; }
+    /* NavLink Active Highlight Style */
+    nav a.active { background: #02c39a; color: #023e47; font-weight: bold; }
+    .page { display: none; background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .page.active-page { display: block; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#skills" class="nav-link">Skills</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </nav>
+
+  <section id="home" class="page">
+    <h1>Welcome to My Portfolio</h1>
+    <p>Hi, I am a Full Stack Developer specializing in Web Technologies.</p>
+  </section>
+
+  <section id="projects" class="page">
+    <h1>My Projects</h1>
+    <ul>
+      <li>E-Commerce Mini Shop</li>
+      <li>Attendance Portal</li>
+      <li>Personal Blog</li>
+    </ul>
+  </section>
+
+  <section id="skills" class="page">
+    <h1>Technical Skills</h1>
+    <p>HTML5, CSS3, JavaScript (ES6+), React, Node.js, Express, MongoDB</p>
+  </section>
+
+  <section id="contact" class="page">
+    <h1>Contact Me</h1>
+    <p>Email: student@mtech.edu.pk</p>
+  </section>
+
+  <script>
+    function handleRouting() {
+      const hash = window.location.hash || '#home';
+      
+      // Update NavLink active styles
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === hash);
+      });
+
+      // Show current page view
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.toggle('active-page', '#' + page.id === hash);
+      });
+    }
+
+    window.addEventListener('hashchange', handleRouting);
+    window.addEventListener('load', handleRouting);
+  </script>
+</body>
+</html>
