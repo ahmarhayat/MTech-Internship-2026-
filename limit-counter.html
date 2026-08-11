@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Character Limit Counter</title>
+</head>
+<body>
+  <h2>5. Textarea Character Limit</h2>
+  <textarea id="text-box" rows="5" cols="40" placeholder="Type your text here..."></textarea>
+  <p id="counter">200 characters remaining</p>
+
+  <script>
+    const maxLimit = 200;
+    const textBox = document.getElementById('text-box');
+    const counter = document.getElementById('counter');
+
+    textBox.addEventListener('input', () => {
+      const remaining = maxLimit - textBox.value.length;
+
+      if (remaining >= 0) {
+        counter.innerText = `${remaining} characters remaining`;
+        counter.style.color = 'black';
+      } else {
+        counter.innerText = `Limit exceeded by ${Math.abs(remaining)} characters!`;
+        counter.style.color = 'red';
+      }
+    });
+  </script>
+</body>
+</html>

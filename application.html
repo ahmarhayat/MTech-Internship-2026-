@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Internship Application Form</title>
+</head>
+<body>
+  <h2>3. Internship Application</h2>
+  <form id="intern-form" style="max-width: 300px;">
+    <label>Full Name:</label><br>
+    <input type="text" id="name" required style="width: 100%;"><br><br>
+
+    <label>Email Address:</label><br>
+    <input type="email" id="email" required style="width: 100%;"><br><br>
+
+    <label>Domain:</label><br>
+    <select id="domain" style="width: 100%;">
+      <option value="Frontend Development">Frontend Development</option>
+      <option value="Backend Development">Backend Development</option>
+      <option value="Cyber Security">Cyber Security</option>
+    </select><br><br>
+
+    <label>Motivation Statement:</label><br>
+    <textarea id="motivation" rows="4" required style="width: 100%;"></textarea><br><br>
+
+    <button type="submit">Submit Application</button>
+  </form>
+
+  <div id="summary-card" style="margin-top: 20px; padding: 15px; border: 1px solid #000; display: none; max-width: 300px; background-color: #f9f9f9;">
+    <h3>Application Summary</h3>
+    <p><strong>Name:</strong> <span id="summary-name"></span></p>
+    <p><strong>Email:</strong> <span id="summary-email"></span></p>
+    <p><strong>Domain:</strong> <span id="summary-domain"></span></p>
+    <p><strong>Motivation:</strong> <span id="summary-motivation"></span></p>
+  </div>
+
+  <script>
+    document.getElementById('intern-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      document.getElementById('summary-name').innerText = document.getElementById('name').value;
+      document.getElementById('summary-email').innerText = document.getElementById('email').value;
+      document.getElementById('summary-domain').innerText = document.getElementById('domain').value;
+      document.getElementById('summary-motivation').innerText = document.getElementById('motivation').value;
+
+      document.getElementById('summary-card').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

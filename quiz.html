@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Quiz Component</title>
+</head>
+<body>
+  <h2>4. Quiz</h2>
+  <p><strong>Question:</strong> What language gives a webpage structure?</p>
+
+  <button onclick="handleAnswer(false)">A) CSS</button>
+  <button onclick="handleAnswer(true)">B) HTML</button>
+  <button onclick="handleAnswer(false)">C) JavaScript</button>
+  <button onclick="handleAnswer(false)">D) SQL</button>
+
+  <p id="quiz-result" style="font-weight: bold; margin-top: 15px;"></p>
+
+  <script>
+    function handleAnswer(isCorrect) {
+      const resultText = document.getElementById('quiz-result');
+      if (isCorrect) {
+        resultText.innerText = 'Correct Answer!';
+        resultText.style.color = 'green';
+      } else {
+        resultText.innerText = 'Wrong Answer! Try again.';
+        resultText.style.color = 'red';
+      }
+    }
+  </script>
+</body>
+</html>
