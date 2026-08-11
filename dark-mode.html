@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 1: Dark Mode Context</title>
+  <!-- React & Babel CDNs -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body style="margin: 0; font-family: sans-serif;">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { createContext, useContext, useState } = React;
+
+    // 1. Create Context
+    const ThemeContext = createContext();
+
+    // 2. Provider Component
+    function ThemeProvider({ children }) {
+      const [theme, setTheme] = useState('light');
+
+      const toggleTheme = () => {
+        setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+      };
+
+      const themeStyles = {
+        backgroundColor: theme === 'light' ? '#ffffff' : '#1e1e1e',
+        color: theme === 'light' ? '#000000' : '#ffffff',
+        minHeight: '100vh',
+        transition: 'all 0.3s ease'
+      };
+
+      return (
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+          <div style={themeStyles}>
+            {children}
+          </div>
+        </ThemeContext.Provider>
+      );
+    }
+
+    const useTheme = () => useContext(ThemeContext);
+
+    // 3. Nested Component 1: Navbar
+    function Navbar() {
+      const { theme, toggleTheme } = useTheme();
+      return (
+        <nav style={{ padding: '1rem', borderBottom: '1px solid #ccc', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <h2>ThemeApp</h2>
+          <button onClick={toggleTheme} style={{ padding: '8px 16px', cursor: 'pointer' }}>
+            Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+          </button>
+        </nav>
+      );
+    }
+
+    // 4. Nested Component 2: Card
+    function Card() {
+      const { theme } = useTheme();
+      return (
+        <div style={{
+          border: '1px solid #777',
+          padding: '1.5rem',
+          margin: '2rem auto',
+          maxWidth: '400px',
+          borderRadius: '8px',
+          backgroundColor: theme === 'light' ? '#f9f9f9' : '#2d2d2d'
+        }}>
+          <h3>Theme Card</h3>
+          <p>Current Active Theme: <strong>{theme}</strong></p>
+        </div>
+      );
+    }
+
+    // 5. Nested Component 3: Footer
+    function Footer() {
+      const { theme } = useTheme();
+      return (
+        <footer style={{ padding: '1rem', textAlign: 'center', borderTop: '1px solid #ccc', marginTop: '2rem' }}>
+          <p>Footer Component — Theme applied: {theme}</p>
+        </footer>
+      );
+    }
+
+    // Main App
+    function App() {
+      return (
+        <ThemeProvider>
+          <Navbar />
+          <Card />
+          <Footer />
+        </ThemeProvider>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lighthouse Before Optimization</title>
+  <!-- Large unminified styling script slowing render -->
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 20px; }
+    .hero { width: 100%; height: auto; }
+    .gallery img { width: 100%; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Unoptimized Portfolio Gallery</h1>
+  
+  <!-- Fix missing: No width/height causes Cumulative Layout Shift (CLS) -->
+  <!-- Fix missing: No loading="lazy" forces browser to load all images immediately -->
+  <img src="https://picsum.photos/1200/800?random=1" alt="Hero Image" class="hero">
+
+  <div class="gallery">
+    <img src="https://picsum.photos/800/600?random=2" alt="Gallery Item 1">
+    <img src="https://picsum.photos/800/600?random=3" alt="Gallery Item 2">
+    <img src="https://picsum.photos/800/600?random=4" alt="Gallery Item 3">
+  </div>
+
+  <!-- Unoptimized heavy synchronous blocking script -->
+  <script>
+    // Blocking execution simulating heavy JavaScript overhead
+    const start = Date.now();
+    while (Date.now() - start < 300) {} 
+  </script>
+</body>
+</html>

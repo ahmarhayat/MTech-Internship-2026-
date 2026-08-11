@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lighthouse After Optimization</title>
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 20px; }
+    /* Aspect ratios reserved to prevent CLS layout jumping */
+    .hero { width: 100%; height: auto; aspect-ratio: 1200/800; }
+    .gallery img { width: 100%; height: auto; aspect-ratio: 800/600; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Optimized Portfolio Gallery</h1>
+
+  <!-- Applied Fix 1 & 2: Added explicit width/height and fetchpriority for LCP -->
+  <img src="https://picsum.photos/1200/800?random=1" alt="Hero Image" class="hero" width="1200" height="800" fetchpriority="high">
+
+  <div class="gallery">
+    <!-- Applied Fix 3: Added loading="lazy" for offscreen image assets -->
+    <img src="https://picsum.photos/800/600?random=2" alt="Gallery Item 1" width="800" height="600" loading="lazy">
+    <img src="https://picsum.photos/800/600?random=3" alt="Gallery Item 2" width="800" height="600" loading="lazy">
+    <img src="https://picsum.photos/800/600?random=4" alt="Gallery Item 3" width="800" height="600" loading="lazy">
+  </div>
+
+  <!-- Non-blocking asynchronous script execution -->
+  <script defer src="data:text/javascript,console.log('Optimized script loaded asynchronously');"></script>
+</body>
+</html>
